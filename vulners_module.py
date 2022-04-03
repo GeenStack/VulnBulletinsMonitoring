@@ -5,7 +5,7 @@ vulners_api = vulners.VulnersApi(api_key="")
 
 
 def get_bulletins(cve):
-    result = {"metadata":{"bulletinFamily":{}}, "bulletins":{}}
+    result = {"cve_id":cve, "metadata":{"bulletinFamily":{}}, "bulletins":{}}
     vulners_response = vulners_api.get_bulletin_references(cve)
     for i in vulners_response:
         for bulletin in vulners_response[i]:

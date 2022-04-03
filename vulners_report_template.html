@@ -1,0 +1,32 @@
+<style>
+    table, th, td {
+        border: 1px solid black;
+       }
+</style>
+
+<h2> Vulners References for {{ cve_id }}</h2>
+<h3>Bulletins count</h3>
+{% for i in metadata['bulletinFamily'] %}
+    <p>{{ i }} {{ metadata['bulletinFamily'][i] }}</p>
+{% endfor %}
+
+{% for bulletinFamily in bulletins %}
+<h4>{{ bulletinFamily }}</h4>
+<table>
+    <tr>
+        <th>id</th>
+        <th>Title</th>
+        <th>Type</th>
+        <th>Reference</th>
+    </tr>
+
+    {% for bulletin in bulletins[bulletinFamily] %}
+    <tr>
+        <th>{{ bulletin['id'] }}</th>
+        <th>{{ bulletin['title'] }}</th>
+        <th>{{ bulletin['type'] }}</th>
+        <th>{{ bulletin['href'] }}</th>
+    </tr>
+    {% endfor %}
+</table>
+{% endfor %}
