@@ -1,4 +1,15 @@
 <style>
+
+    .counter{
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    h1, h2 {
+        text-align: center;
+    }
     table {
         width: 80%;
         margin-right: auto;
@@ -15,14 +26,17 @@
 </style>
 
 
-<h2> Vulners References for {{ cve_id }}</h2>
-<h3>Bulletins count</h3>
+<h1> Vulners References for {{ cve_id }}</h1>
+<hr/>
+<h2>Bulletins count</h2>
+<table class="counter">
 {% for i in metadata['bulletinFamily'] %}
-    <p>{{ i }} {{ metadata['bulletinFamily'][i] }}</p>
+    <tr><td><a href="#{{ i }}">{{ i }}</a></td><td>{{ metadata['bulletinFamily'][i] }}</td></tr>
 {% endfor %}
-
+</table>
 {% for bulletinFamily in bulletins %}
-<h4>{{ bulletinFamily }}</h4>
+<hr/>
+<h2 id="{{ bulletinFamily }}">{{ bulletinFamily }}</h2>
 <table>
     <tr>
         <th>id</th>
@@ -36,7 +50,7 @@
         <th>{{ bulletin['id'] }}</th>
         <th>{{ bulletin['title'] }}</th>
         <th>{{ bulletin['type'] }}</th>
-        <th>{{ bulletin['href'] }}</th>
+        <th><a href="{{ bulletin['href'] }}" target="_blank">{{ bulletin['href'] }}</a></th>
     </tr>
     {% endfor %}
 </table>
