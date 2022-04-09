@@ -1,7 +1,7 @@
 import vulners
+from config import VULNERS_API_KEY
 
-
-vulners_api = vulners.VulnersApi(api_key="")
+vulners_api = vulners.VulnersApi(api_key=VULNERS_API_KEY)
 
 
 def get_bulletins(cve):
